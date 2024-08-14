@@ -1,14 +1,20 @@
 {
   "name": "ngx-timer-new-lib",
-  "version": "0.0.0",
+  "version": "17.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lib:build": "ng build ngx-timer-new --configuration production"
   },
-  "private": true,
+  "author": "Santhoshkumar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santhoshkumar-27/ngx-timer-new-lib"
+  },
+  "homepage": "https://github.com/santhoshkumar-27/ngx-timer-new-lib",
   "dependencies": {
     "@angular/animations": "^17.3.0",
     "@angular/common": "^17.3.0",
@@ -35,5 +41,17 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^17.3.0",
     "typescript": "~5.4.2"
-  }
+  },
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "timer",
+    "countup",
+    "countdown",
+    "ngx-timer",
+    "count-up-timer",
+    "ngx count up timer",
+    "count-down-timer",
+    "ngx count down timer"
+  ]
 }

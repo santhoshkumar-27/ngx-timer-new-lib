@@ -1,24 +1,123 @@
-# NgxTimerNew
+# NgxTimer
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Count up timer for angular 17 this project is forked from main author [Yashvida](https://github.com/Y4SHVINE)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project ngx-timer-new` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-timer-new`.
-> Note: Don't forget to add `--project ngx-timer-new` or else it will be added to the default project in your `angular.json` file. 
+```bash
+npm i ngx-timer-new --save
+```
 
-## Build
+## Usage
 
-Run `ng build ngx-timer-new` to build the project. The build artifacts will be stored in the `dist/` directory.
+```ts
+import { NgxTimerModule } from 'ngx-timer-new';
 
-## Publishing
+@NgModule({
+  imports: [
+    ...
+    NgxTimerModule
+  ],
+})
+```
+### 1.Count Up Timer
+In html
+```html
+<countup-timer [countUpTimerConfig]="testConfig"></countup-timer>
+```
+You can import ***CountupTimerService***  from **ngx-timer-new** to do the following functionalities.
 
-After building your library with `ng build ngx-timer-new`, go to the dist folder `cd dist/ngx-timer-new` and run `npm publish`.
 
-## Running unit tests
+ 1. To start the timer
+```ts
+this.countupTimerService.startTimer();
+```
+By passing a start time to above function timer will start from that.
+eg :-
+```ts
+let cdate = new Date();
+cdate.setHours(cdate.getHours()-2);
+this.countupTimerService.startTimer(cdate);
+```
+  2. To pause the timer
+```ts
+this.countupTimerService.pauseTimer();
+```
+  3. To stop the timer
+```ts
+this.countupTimerService.stopTimer();
+```
+***Configurations***
 
-Run `ng test ngx-timer-new` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Import **countUpTimerConfigModel** model from ngx-timer-new you will be able use following configurations.
+```ts
+import { countUpTimerConfigModel, timerTexts } from 'ngx-timer-new';    
 
-## Further help
+ngOnInit(): void {
+    //countUpTimerConfigModel
+    this.testConfig = new countUpTimerConfigModel();
+    
+    //custom class
+    this.testConfig.timerClass  = 'test_Timer_class';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    //timer text values  
+    this.testConfig.timerTexts = new timerTexts();
+    this.testConfig.timerTexts.hourText = "Hours"; //default - hh
+    this.testConfig.timerTexts.minuteText = "Minutes"; //default - mm
+    this.testConfig.timerTexts.secondsText = "Seconds"; //default - ss
+}
+```
+### 2.Count Down Timer
+In html
+```html
+<countdown-timer [countDownTimerConfig]="testConfig"></countdown-timer>
+```
+You can import ***CountdownTimerService***  from **ngx-timer-new** to do the following functionalities.
+
+ 1.To start the timer
+```ts
+let cdate = new Date();
+cdate.setHours(cdate.getHours() + 2);
+this.CountdownTimerService.startTimer(cdate);
+```
+  2.To pause the timer
+```ts
+this.CountdownTimerService.pauseTimer();
+```
+  3.To stop the timer
+```ts
+this.CountdownTimerService.stopTimer();
+```
+  3.To resume the timer
+```ts
+this.CountdownTimerService.resumeTimer();
+```
+***Configurations***
+
+Import **countUpTimerConfigModel** model from ngx-timer-new you will be able use following configurations.
+```ts
+import { countDownTimerConfigModel, countDownTimerTexts } from 'ngx-timer-new';    
+
+ngOnInit(): void {
+    //countUpTimerConfigModel
+    this.testConfig = new countDownTimerConfigModel();
+    
+    //custom class
+    this.testConfig.timerClass  = 'test_Timer_class';
+
+    //timer text values  
+    this.testConfig.timerTexts = new countDownTimerTexts();
+    this.testConfig.timerTexts.hourText = "Hours"; //default - hh
+    this.testConfig.timerTexts.minuteText = "Minutes"; //default - mm
+    this.testConfig.timerTexts.secondsText = "Seconds"; //default - ss
+}
+```
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 😊
+
+## Impending
+1. Day,Month and Year Configuration for both timers.
+2. Stopwatch implementation.
+
+## License & copyright
+Licensed under  the [MIT License](LICENSE)

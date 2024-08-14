@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { CountupTimerService } from './countup-timer.service';
 import { countUpTimerConfigModel, timerTexts } from './countup-timer.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'countup-timer',
@@ -9,14 +10,14 @@ import { countUpTimerConfigModel, timerTexts } from './countup-timer.model';
 })
 export class CountupTimerComponent implements OnInit, OnDestroy {
 
-  @Input() startTime: String;
-  @Input() countUpTimerConfig: countUpTimerConfigModel;
+  @Input() startTime!: String;
+  @Input() countUpTimerConfig!: countUpTimerConfigModel;
 
   //Init
   timerObj: any = {};
-  private timerSubscription;
-  timerConfig: countUpTimerConfigModel;
-  timerTextConfig: timerTexts;
+  private timerSubscription!: Subscription;
+  timerConfig!: countUpTimerConfigModel;
+  timerTextConfig!: timerTexts;
 
   constructor(private countupTimerService: CountupTimerService) {}
 

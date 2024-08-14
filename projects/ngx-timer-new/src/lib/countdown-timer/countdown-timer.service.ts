@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, interval } from 'rxjs';
+import { Observable, Subscription, interval } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class CountdownTimerService {
   }
   public isTimerStart: boolean = false;
   public interval: Observable<any>;
-  public intervalSubscription;
+  public intervalSubscription!: Subscription;
   public totalSeconds: number = 0;
   public currentOperationId: number = 0;
 
@@ -96,7 +96,7 @@ export class CountdownTimerService {
   }
 
   //set timer value
-  setTimervalue = (val) => {
+  setTimervalue = (val: string | number) => {
     let valString = val + "";
     return (valString.length < 2) ? "0" + valString : valString;
   }

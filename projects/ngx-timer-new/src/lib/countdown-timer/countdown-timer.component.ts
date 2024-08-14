@@ -10,23 +10,23 @@ import { Subscription } from 'rxjs';
 })
 export class CountdownTimerComponent implements OnInit {
 
-  @Input() startTime: String;
-  @Input() countDownTimerConfig: countDownTimerConfigModel;
+  @Input() startTime!: String;
+  @Input() countDownTimerConfig!: countDownTimerConfigModel;
 
   //Init
-  private timerSubscription:Subscription;
+  private timerSubscription!: Subscription;
   timerObj: any = {};
-  timerConfig: countDownTimerConfigModel;
-  timerTextConfig: countDownTimerTexts;
+  timerConfig!: countDownTimerConfigModel;
+  timerTextConfig!: countDownTimerTexts;
 
-  constructor(private countdownTimerService: CountdownTimerService) {}
+  constructor(private countdownTimerService: CountdownTimerService) { }
 
   ngOnInit() {
     this.getTimerValue();
     this.timerConfig = new countDownTimerConfigModel();
     this.timerTextConfig = new countDownTimerTexts();
     this.timerConfig = this.countDownTimerConfig ? Object.assign(this.countDownTimerConfig) : null;
-    this.timerTextConfig = this.countDownTimerConfig && this.countDownTimerConfig.timerTexts ? Object.assign(this.countDownTimerConfig.timerTexts) :  null;
+    this.timerTextConfig = this.countDownTimerConfig && this.countDownTimerConfig.timerTexts ? Object.assign(this.countDownTimerConfig.timerTexts) : null;
   }
 
   //get timer value
